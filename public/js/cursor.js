@@ -42,6 +42,17 @@
     cursor.classList.add('is-pressing');
   }, true);
 
+  // Release implicit pointer capture AFTER it has been established.
+  // (gotpointercapture fires after pointerdown's default behaviour sets it up.)
+  // Without this, the captured element keeps the browser's native cursor
+  // visible for the entire press duration, even with cursor:none on the page.
+  document.addEventListener('gotpointercapture', event => {
+    if (event.pointerType !== 'mouse') return;
+    try {
+      event.target.releasePointerCapture(event.pointerId);
+    } catch (_) {}
+  }, true);
+
   document.addEventListener('pointerup', () => {
     cursor.classList.remove('is-pressing');
   }, true);

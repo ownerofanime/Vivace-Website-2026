@@ -8,7 +8,7 @@ module.exports = [
     basket: {
       img: 'assets/basket-goods/ACF.png',
       modifierClass: '',
-      style: 'left:14%; top:18%; --r:-8deg; width:22%',
+      style: 'left:14%; top:12%; --r:-8deg; width:22%',
     },
   },
   {
@@ -20,7 +20,7 @@ module.exports = [
     basket: {
       img: 'assets/basket-goods/SICS.png',
       modifierClass: '',
-      style: 'left:62%; top:18%; --r:7deg; width:22%',
+      style: 'left:62%; top:12%; --r:7deg; width:22%',
     },
   },
   {
@@ -32,7 +32,7 @@ module.exports = [
     basket: {
       img: 'assets/basket-goods/icon-chips.png',
       modifierClass: 'icon-good',
-      style: 'left:38%; top:32%; --r:-10deg; width:23%',
+      style: 'left:38%; top:28%; --r:-10deg; width:23%',
     },
   },
   {
@@ -44,7 +44,7 @@ module.exports = [
     basket: {
       img: 'assets/basket-goods/smux.png',
       modifierClass: 'smux-can',
-      style: 'left:6%; top:44%; --r:14deg; width:36%',
+      style: 'left:6%; top:40%; --r:14deg; width:36%',
     },
   },
   {
@@ -56,7 +56,7 @@ module.exports = [
     basket: {
       img: 'assets/basket-goods/ssu-bar.png',
       modifierClass: 'ssu-good',
-      style: 'left:60%; top:45%; --r:8deg; width:27%',
+      style: 'left:60%; top:42%; --r:8deg; width:27%',
     },
   },
   {
@@ -68,7 +68,7 @@ module.exports = [
     basket: {
       img: 'assets/basket-goods/SMUSA.png',
       modifierClass: '',
-      style: 'left:23%; top:63%; --r:-12deg; width:28%',
+      style: 'left:23%; top:58%; --r:-12deg; width:28%',
     },
   },
   {
@@ -80,7 +80,7 @@ module.exports = [
     basket: {
       img: 'assets/basket-goods/academic-noodles.png',
       modifierClass: 'acad-good',
-      style: 'left:58%; top:71%; --r:3deg; width:28%',
+      style: 'left:58%; top:66%; --r:3deg; width:28%',
     },
   },
 ];

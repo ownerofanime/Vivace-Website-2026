@@ -1,0 +1,202 @@
+<%- include('partials/head') %>
+<body>
+
+<%- include('partials/intro') %>
+<%- include('partials/nav') %>
+
+<!-- Page header -->
+<section class="page-header">
+  <div class="container">
+    <span class="section-eyebrow">★ Aisle 5 · Schedule</span>
+    <h1 class="section-h2">What's on the <span class="hi">shelves.</span></h1>
+    <p style="font-size:18px; max-width:52ch; margin:0">Three days, packed with performances, try-outs, and CCA showcases. Pick what you want to catch.</p>
+  </div>
+</section>
+
+<!-- Schedule -->
+<section style="padding:60px 22px 80px">
+  <div class="container">
+
+    <!-- Day tabs -->
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px">
+      <button class="prog-tab active-tab" data-day="all" style="padding:10px 20px; border:3px solid var(--ink); border-radius:999px; font-family:'Fredoka',sans-serif; font-weight:700; font-size:16px; cursor:pointer; background:var(--ink); color:#fff; box-shadow:4px 4px 0 rgba(26,26,26,.3)">All days</button>
+      <button class="prog-tab" data-day="11" style="padding:10px 20px; border:3px solid var(--ink); border-radius:999px; font-family:'Fredoka',sans-serif; font-weight:700; font-size:16px; cursor:pointer; background:#fff; color:var(--ink); box-shadow:4px 4px 0 var(--ink)">Mon 11 Aug</button>
+      <button class="prog-tab" data-day="12" style="padding:10px 20px; border:3px solid var(--ink); border-radius:999px; font-family:'Fredoka',sans-serif; font-weight:700; font-size:16px; cursor:pointer; background:#fff; color:var(--ink); box-shadow:4px 4px 0 var(--ink)">Tue 12 Aug</button>
+      <button class="prog-tab" data-day="13" style="padding:10px 20px; border:3px solid var(--ink); border-radius:999px; font-family:'Fredoka',sans-serif; font-weight:700; font-size:16px; cursor:pointer; background:#fff; color:var(--ink); box-shadow:4px 4px 0 var(--ink)">Wed 13 Aug</button>
+    </div>
+
+    <!-- Programme cards -->
+    <div id="prog-list" style="display:flex; flex-direction:column; gap:16px">
+
+      <!-- Day 11 -->
+      <div class="prog-card" data-day="11" style="border:4px solid var(--ink); border-radius:18px; overflow:hidden; box-shadow:6px 6px 0 var(--ink); background:#fff">
+        <div style="background:var(--green); color:#fff; padding:12px 22px; display:flex; align-items:center; gap:14px">
+          <span style="font-family:'Bagel Fat One',sans-serif; font-size:32px; line-height:1">11</span>
+          <div>
+            <div style="font-family:'Space Mono',monospace; font-size:11px; opacity:.8; text-transform:uppercase">MON · 11 AUG 2026</div>
+            <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:18px">Opening Day</div>
+          </div>
+        </div>
+        <div style="padding:22px; display:flex; flex-direction:column; gap:14px">
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--green); min-width:90px; padding-top:2px">10:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Doors Open · CCA Booths</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SMU Concourse, L1 · All CCAs set up and ready</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--green); min-width:90px; padding-top:2px">11:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Official Opening Ceremony</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SMU Concourse · Ribbon-cutting & school umbrella parade</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--green); min-width:90px; padding-top:2px">12:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Free Tote Giveaway</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">First 500 attendees · Limited stock</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--green); min-width:90px; padding-top:2px">14:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">ACF Showcase Performance</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SMU Concourse Stage · Arts & Cultural showcase</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--green); min-width:90px; padding-top:2px">18:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Doors Close</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">See you tomorrow!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 12 -->
+      <div class="prog-card" data-day="12" style="border:4px solid var(--ink); border-radius:18px; overflow:hidden; box-shadow:6px 6px 0 var(--ink); background:#fff">
+        <div style="background:var(--orange); color:#fff; padding:12px 22px; display:flex; align-items:center; gap:14px">
+          <span style="font-family:'Bagel Fat One',sans-serif; font-size:32px; line-height:1">12</span>
+          <div>
+            <div style="font-family:'Space Mono',monospace; font-size:11px; opacity:.8; text-transform:uppercase">TUE · 12 AUG 2026</div>
+            <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:18px">Try-out Night</div>
+          </div>
+        </div>
+        <div style="padding:22px; display:flex; flex-direction:column; gap:14px">
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--orange); min-width:90px; padding-top:2px">10:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Doors Open · CCA Booths</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SMU Concourse, L1</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--orange); min-width:90px; padding-top:2px">12:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">SICS & ICON Panel Talk</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">Seminar Room 1 · Service & international pathways</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--orange); min-width:90px; padding-top:2px">15:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">GRI & Academic Fair</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SMU Concourse · Industry and academic networking</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--orange); min-width:90px; padding-top:2px">17:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">CCA Try-out Night</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SOA Gym + Studios · Sports, dance, outdoor activities</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--orange); min-width:90px; padding-top:2px">21:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Try-outs End</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">Pre-booking recommended via the Explore page</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 13 -->
+      <div class="prog-card" data-day="13" style="border:4px solid var(--ink); border-radius:18px; overflow:hidden; box-shadow:6px 6px 0 var(--ink); background:#fff">
+        <div style="background:var(--red); color:#fff; padding:12px 22px; display:flex; align-items:center; gap:14px">
+          <span style="font-family:'Bagel Fat One',sans-serif; font-size:32px; line-height:1">13</span>
+          <div>
+            <div style="font-family:'Space Mono',monospace; font-size:11px; opacity:.8; text-transform:uppercase">WED · 13 AUG 2026</div>
+            <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:18px">Closing Night</div>
+          </div>
+        </div>
+        <div style="padding:22px; display:flex; flex-direction:column; gap:14px">
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--red); min-width:90px; padding-top:2px">10:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Final Day · All Booths Open</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SMU Concourse, L1 · Last chance to sign up</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--red); min-width:90px; padding-top:2px">14:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">SMUX Adventure Demo</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SMU Concourse · Outdoor and adventure gear showcase</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--red); min-width:90px; padding-top:2px">16:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">SSU Sports Finals</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">SOA Courts · Friendly exhibition matches</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--red); min-width:90px; padding-top:2px">18:30</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Closing Performance & Grand Finale</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">Li Ka Shing Library · Performances, prize-giving, send-off</div>
+            </div>
+          </div>
+          <div class="prog-slot" style="display:flex; gap:16px; align-items:flex-start">
+            <div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--red); min-width:90px; padding-top:2px">21:00</div>
+            <div>
+              <div style="font-family:'Fredoka',sans-serif; font-weight:700; font-size:17px">Vivace 2026 closes</div>
+              <div style="font-family:'Fredoka',sans-serif; font-size:14px; color:#666">Thank you for being part of the haul ♥</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.prog-tab');
+  const cards = document.querySelectorAll('.prog-card');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.style.background = '#fff';
+        t.style.color = 'var(--ink)';
+      });
+      tab.style.background = 'var(--ink)';
+      tab.style.color = '#fff';
+      const day = tab.dataset.day;
+      cards.forEach(card => {
+        card.style.display = (day === 'all' || card.dataset.day === day) ? 'block' : 'none';
+      });
+    });
+  });
+</script>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>

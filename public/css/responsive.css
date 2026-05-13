@@ -44,7 +44,7 @@
       --hero-basket-gap: 76px;
       min-height:680px;
     }
-    .hero-wordmark{ font-size:clamp(58px, 18vw, 82px); text-shadow:3px 3px 0 #fff, 5px 5px 0 var(--ink) }
+    .hero-wordmark{ font-size:clamp(62px, 17vw, 94px); text-shadow:3px 3px 0 #fff, 5px 5px 0 var(--ink) }
     .hero-wordmark .title-year{ text-shadow:2px 2px 0 #fff, 3px 3px 0 var(--ink) }
     .basket-hero .hero-meta{ gap:8px; margin-top:14px }
     .basket-hero .hero-meta span{
@@ -66,8 +66,8 @@
       transform:none;
     }
     .find-cca-sign{
-      top:5.5%;
-      width:66%;
+      width:min(360px, 88vw);
+      margin-bottom:6px;
     }
     .basket-decor.price-tag{ --x:91%; --y:10%; --w:16% }
     .basket-decor.sun-tag{ --x:10%; --y:10%; --w:17% }
@@ -180,7 +180,7 @@
     .label-pack{ grid-template-columns:1fr }
     .cca-grid{ grid-template-columns: 1fr }
     .hero h1{ font-size:50px }
-    .hero-wordmark{ font-size:54px }
+    .hero-wordmark{ font-size:58px }
     .basket-hero-wrap{ min-height:650px }
     .basket-showcase{ width:108vw }
     .basket-decor.price-tag{ --w:15% }
@@ -261,6 +261,16 @@
     html.glove-cursor-ready input,
     html.glove-cursor-ready textarea,
     html.glove-cursor-ready [contenteditable="true"]{
+      cursor:none !important;
+    }
+
+    /* Prevent focus styles from restoring the native cursor on interactive
+       elements — specifically targets the menu overlay and its children */
+    html.glove-cursor-ready :focus,
+    html.glove-cursor-ready :focus-visible,
+    html.glove-cursor-ready .menu-overlay,
+    html.glove-cursor-ready .menu-overlay *,
+    html.glove-cursor-ready .menu-backdrop{
       cursor:none !important;
     }
 

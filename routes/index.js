@@ -38,12 +38,22 @@ router.get('/faq', (req, res) => {
 
 // Partners & Deals page
 router.get('/partners', (req, res) => {
-  res.render('partners-page', { partners });
+  res.render('partners-page', { partners, page: 'partners' });
 });
 
 // Events / Calendar page
 router.get('/events', (req, res) => {
   res.render('events-page', { events });
+});
+
+// Venue map page
+router.get('/map', (req, res) => {
+  res.render('map-page');
+});
+
+// Programmes / schedule page
+router.get('/programmes', (req, res) => {
+  res.render('programmes-page');
 });
 
 // CCA detail page

@@ -1,53 +1,84 @@
-<%- include('partials/head') %>
-<body>
+<%- include('partials/head', { page: 'partners' }) %>
+<body class="sponsors-page">
 
-<%- include('partials/intro') %>
 <%- include('partials/nav') %>
 
-<!-- Page header -->
-<section class="page-header" style="background:var(--blue); color:#fff; border-bottom:4px solid var(--ink)">
-  <div class="container">
-    <span class="section-eyebrow" style="background:var(--yellow); color:var(--ink)">★ Aisle 3 · Partners</span>
-    <h1 class="section-h2" style="color:#fff">Stock up <span class="hi">on perks.</span></h1>
-    <p style="font-size:18px; max-width:54ch; margin:0; color:rgba(255,255,255,.9)">Six brands rolling out exclusive student deals across the three days. Flash your matric card to redeem.</p>
+<!-- Glass fridge door opening animation -->
+<div class="glass-overlay" id="glass-overlay" aria-hidden="true">
+  <div class="glass-door glass-door--left">
+    <div class="door-label">❄ FROZEN<br>AISLE ❄</div>
+    <span class="door-flake" style="top:18%; left:22%; animation-delay:-.8s">❄</span>
+    <span class="door-flake" style="top:62%; left:55%; animation-delay:-2s; font-size:14px">❄</span>
+    <span class="door-flake" style="top:38%; left:12%; animation-delay:-1.2s; font-size:16px">❄</span>
   </div>
-</section>
+  <div class="glass-door glass-door--right">
+    <span class="door-flake" style="top:24%; right:28%; animation-delay:-.4s">❄</span>
+    <span class="door-flake" style="top:70%; right:18%; animation-delay:-1.8s; font-size:14px">❄</span>
+    <span class="door-flake" style="top:48%; right:52%; animation-delay:-2.4s; font-size:16px">❄</span>
+  </div>
+</div>
+<div class="door-fog" id="door-fog" aria-hidden="true"></div>
 
-<!-- Partners & Deals -->
-<section class="partners" id="partners" style="background:var(--blue); border-top:none; padding-top:40px">
-  <div class="container">
+<main class="sponsors-main">
 
-    <!-- Sponsor tiles -->
-    <div class="partners-row">
-      <% partners.sponsors.forEach(sponsor => { %>
-        <div class="partner-tile <%= sponsor.tileClass %>"><%= sponsor.name %></div>
-      <% }) %>
-    </div>
+  <!-- Fridge top light bar -->
+  <div class="fridge-light" aria-hidden="true"></div>
 
-    <!-- Deal cards -->
-    <div class="deals-grid">
-      <% partners.deals.forEach(deal => { %>
-        <div class="deal">
-          <div class="head" style="<%= deal.headStyle %>">
-            <div class="perc" style="<%= deal.percStyle %>"><%= deal.perc %></div>
-            <div>
-              <h4><%= deal.title %></h4>
-              <div class="who" style="<%= deal.whoStyle %>"><%= deal.who %></div>
+  <section class="sponsors-hero" aria-labelledby="sponsors-title">
+
+    <div class="sponsors-shell">
+
+      <div class="sponsors-header">
+        <span class="section-eyebrow">★ Chiller Aisle · Special Thanks</span>
+        <h1 id="sponsors-title" class="section-h2">Our <span class="hi">Sponsors.</span></h1>
+        <p class="sponsors-intro">The brands keeping Vivace 2026 stocked and chilled.</p>
+      </div>
+
+      <div class="sponsor-shelf-grid">
+        <% partners.tiers.forEach((tier, index) => { %>
+          <section class="sponsor-shelf <%= tier.className %>" aria-labelledby="tier-<%= index %>" style="--tier-color: <%= tier.color %>">
+            <div class="shelf-label">
+              <h2 id="tier-<%= index %>" class="tier-badge"><%= tier.name %></h2>
             </div>
-          </div>
-          <div class="body"><%= deal.body %></div>
-          <div class="foot">
-            <span><%= deal.validity %></span>
-            <span class="go"><%= deal.cta %></span>
-          </div>
-        </div>
-      <% }) %>
-    </div>
+            <div class="sponsor-logos">
+              <% tier.sponsors.forEach((sponsor) => { %>
+                <article class="sponsor-logo-card">
+                  <img src="<%= sponsor.logo %>" alt="<%= sponsor.name %>" loading="lazy">
+                </article>
+              <% }) %>
+            </div>
+            <!-- Glass shelf edge -->
+            <div class="shelf-edge" aria-hidden="true"></div>
+          </section>
+        <% }) %>
+      </div>
 
-  </div>
-</section>
+    </div>
+  </section>
+</main>
 
 <%- include('partials/footer') %>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('glass-overlay');
+    var fog     = document.getElementById('door-fog');
+    // Open doors after short pause so user notices the effect
+    setTimeout(function () {
+      overlay.classList.add('is-open');
+      fog.classList.add('is-visible');
+    }, 420);
+    // Cold fog fades away
+    setTimeout(function () {
+      fog.classList.add('is-gone');
+    }, 1600);
+    // Remove overlay from DOM so it can't block clicks
+    setTimeout(function () {
+      overlay.remove();
+      fog.remove();
+    }, 2400);
+  })();
+</script>
 
 </body>
 </html>
