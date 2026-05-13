@@ -1,21 +1,220 @@
-<%- include('partials/head') %>
-<body>
+<%- include('partials/head', { page: 'about' }) %>
+<body class="about-page">
 
-<%- include('partials/intro') %>
 <%- include('partials/nav') %>
 
-<!-- Page header -->
-<section class="page-header">
-  <div class="container">
-    <span class="section-eyebrow">★ Aisle 1 · About</span>
-    <h1 class="section-h2">What's <span class="hi">in the basket?</span></h1>
-    <p style="font-size:18px; max-width:52ch; margin:0">Everything you need to know about SMU's annual CCA fair — three days, 120+ clubs, one campus.</p>
-  </div>
-</section>
+<!-- ══════════════════════════════════════════════════════
+     SLIDING GLASS DOORS — same as index page
+══════════════════════════════════════════════════════════ -->
+<div id="store-intro" aria-hidden="true">
 
-<%- include('partials/about') %>
+  <div class="si-door si-door-l">
+    <div class="si-glass">
+      <span class="si-door-title">VIVACE<em>'26</em></span>
+      <span class="si-door-sub">SMU&nbsp;CCA&nbsp;FAIR</span>
+    </div>
+    <div class="si-glare"></div>
+    <div class="si-bar"></div>
+    <span class="si-push">&#9664; PUSH</span>
+  </div>
+
+  <div class="si-door si-door-r">
+    <div class="si-glass">
+      <span class="si-open-text">NOW<br>OPEN</span>
+      <span class="si-door-sub">11–13&nbsp;AUG&nbsp;2026</span>
+    </div>
+    <div class="si-glare"></div>
+    <div class="si-bar"></div>
+    <span class="si-push">PUSH &#9654;</span>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     RECEIPT CONTENT
+     Fed from the printer with the receipt end appearing first.
+══════════════════════════════════════════════════════════ -->
+<main class="about-main">
+
+  <!-- Thermal printer machine — receipt feeds out from here -->
+  <div class="receipt-machine" id="receipt-machine" aria-hidden="true">
+    <div class="rm-body">
+      <span class="rm-brand">VIVACE MART &middot; RECEIPT PRINTER</span>
+      <div class="rm-led" id="rm-led"></div>
+    </div>
+    <div class="rm-slot-wrap">
+      <div class="rm-slot"></div>
+    </div>
+  </div>
+
+  <div class="receipt-feed" id="receipt-feed" aria-label="Printing Vivace receipt">
+
+    <!-- Animated printer-head glow -->
+    <div class="receipt-printer-head" id="printer-head"></div>
+
+    <div class="receipt-wrap">
+
+      <!-- Torn top edge -->
+      <div class="receipt-edge receipt-edge--top"></div>
+
+      <div class="receipt-body">
+
+        <!-- ── Store header ── -->
+        <p class="rl center bold">================================</p>
+        <p class="rl center bold">&#9733;&nbsp; VIVACE MART &nbsp;&#9733;</p>
+        <p class="rl center">SMU's Annual CCA Fair</p>
+        <p class="rl center">Organised by SMUSA &middot; 2026</p>
+        <p class="rl center bold">================================</p>
+
+        <p class="rl">&nbsp;</p>
+
+        <!-- ── Event details ── -->
+        <p class="rl"><span class="rk">RECEIPT NO.</span>VIVACE-2026</p>
+        <p class="rl"><span class="rk">DATE</span>11 &ndash; 13 AUG 2026</p>
+        <p class="rl"><span class="rk">TIME</span>10:00 &ndash; 18:00</p>
+        <p class="rl"><span class="rk">VENUE</span>SMU Concourse</p>
+        <p class="rl"><span class="rk">ENTRY</span>Free &mdash; all welcome</p>
+
+        <p class="rl">&nbsp;</p>
+        <p class="rl muted">- - - - - - - - - - - - - - - - - -</p>
+        <p class="rl">&nbsp;</p>
+
+        <!-- ── About section ── -->
+        <p class="rl label">ABOUT VIVACE</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl">Vivace is SMU's annual CCA fair,</p>
+        <p class="rl">organised by the SMU Students'</p>
+        <p class="rl">Association (SMUSA) &mdash; the student</p>
+        <p class="rl">government body for undergraduates,</p>
+        <p class="rl">founded in the year 2000.</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl">A vibrant showcase where every CCA</p>
+        <p class="rl">brings something unique to the table.</p>
+        <p class="rl">Walk in empty-handed; walk out</p>
+        <p class="rl">with a community.</p>
+
+        <p class="rl">&nbsp;</p>
+        <p class="rl muted">- - - - - - - - - - - - - - - - - -</p>
+        <p class="rl">&nbsp;</p>
+
+        <!-- ── Items / stats ── -->
+        <p class="rl label">YOUR BASKET TODAY</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl bold"> QTY &nbsp;&nbsp;ITEM</p>
+        <p class="rl muted"> ----&nbsp;&nbsp;--------------------------</p>
+        <p class="rl"> 150+ &nbsp;Student Clubs &amp; Societies</p>
+        <p class="rl">&nbsp;&nbsp;&nbsp;7  &nbsp;&nbsp;School Umbrellas</p>
+        <p class="rl">&nbsp;&nbsp;&nbsp;3  &nbsp;&nbsp;Days of the Fair</p>
+        <p class="rl">&nbsp;&nbsp;&nbsp;1  &nbsp;&nbsp;Campus (SMU Concourse)</p>
+
+        <p class="rl">&nbsp;</p>
+        <p class="rl muted">- - - - - - - - - - - - - - - - - -</p>
+        <p class="rl">&nbsp;</p>
+
+        <!-- ── CCA aisles ── -->
+        <p class="rl label">CCA AISLES</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl green"> [&#10003;]&nbsp; Academic-Based Clubs</p>
+        <p class="rl green"> [&#10003;]&nbsp; Arts &amp; Cultural (ACF)</p>
+        <p class="rl green"> [&#10003;]&nbsp; Sports Union (SSU)</p>
+        <p class="rl green"> [&#10003;]&nbsp; SMUXploration (SMUX)</p>
+        <p class="rl green"> [&#10003;]&nbsp; Special Interest (SICS)</p>
+        <p class="rl green"> [&#10003;]&nbsp; International (ICON)</p>
+        <p class="rl green"> [&#10003;]&nbsp; Governance &amp; Registered</p>
+
+        <p class="rl">&nbsp;</p>
+        <p class="rl muted">- - - - - - - - - - - - - - - - - -</p>
+        <p class="rl">&nbsp;</p>
+
+        <!-- ── Organised by ── -->
+        <p class="rl label">ORGANISED BY</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl">&nbsp;SMU Students' Association</p>
+        <p class="rl">&nbsp;(SMUSA) &middot; Est. 2000</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl muted">&nbsp;livace.smu.edu.sg</p>
+
+        <p class="rl">&nbsp;</p>
+        <p class="rl center bold team-break">================================</p>
+        <p class="rl">&nbsp;</p>
+
+        <!-- ── Vivace team slider ── -->
+        <section class="rl receipt-team" aria-label="The Vivace Team showcase">
+          <p class="receipt-team-title">The Vivace Team</p>
+          <div class="receipt-team-flourish" aria-hidden="true">
+            <span></span>
+          </div>
+
+          <div class="team-slider" id="team-slider">
+            <button class="team-slider-btn team-slider-btn--prev" type="button" aria-label="Previous team slide">&lt;</button>
+            <div class="team-slide-window">
+              <div class="team-slide is-active" data-team-slide>
+                <div class="team-photo-placeholder">
+                  <span>Operations</span>
+                </div>
+              </div>
+              <div class="team-slide" data-team-slide>
+                <div class="team-photo-placeholder">
+                  <span>Marketing</span>
+                </div>
+              </div>
+              <div class="team-slide" data-team-slide>
+                <div class="team-photo-placeholder">
+                  <span>Programmes</span>
+                </div>
+              </div>
+            </div>
+            <button class="team-slider-btn team-slider-btn--next" type="button" aria-label="Next team slide">&gt;</button>
+          </div>
+
+          <div class="team-slider-dots" aria-label="Team slide navigation">
+            <button class="is-active" type="button" aria-label="Show Operations team" data-team-dot></button>
+            <button type="button" aria-label="Show Marketing team" data-team-dot></button>
+            <button type="button" aria-label="Show Programmes team" data-team-dot></button>
+          </div>
+        </section>
+
+        <p class="rl">&nbsp;</p>
+        <p class="rl center bold team-break">================================</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl center bold">&#9733; THANK YOU FOR VISITING &#9733;</p>
+        <p class="rl center">Walk in empty-handed;</p>
+        <p class="rl center">walk out with a community.</p>
+        <p class="rl">&nbsp;</p>
+        <p class="rl center bold">================================</p>
+
+        <p class="rl">&nbsp;</p>
+
+        <!-- ── Barcode ── -->
+        <div class="rl center" id="receipt-barcode-wrap">
+          <div class="receipt-barcode" id="receipt-barcode"></div>
+        </div>
+        <p class="rl center muted" style="font-size:10px;letter-spacing:.06em">VIVACE-2026 &middot; SMU FAIR</p>
+        <p class="rl center bold">&#9733;&nbsp; SEE YOU IN AUG 2026 &nbsp;&#9733;</p>
+        <p class="rl">&nbsp;</p>
+
+      </div>
+
+      <!-- Torn bottom edge (still printing) -->
+      <div class="receipt-edge receipt-edge--bottom"></div>
+
+    </div>
+
+  </div>
+
+  <!-- CTA — appears after receipt finishes printing -->
+  <div class="about-cta" id="about-cta">
+    <a href="/explore" class="btn primary"><span>Explore CCAs</span><span class="arrow">-></span></a>
+    <a href="/" class="btn ghost"><span>Back to Home</span></a>
+  </div>
+
+</main>
 
 <%- include('partials/footer') %>
+
+<script src="/js/nav.js"></script>
+<script src="/js/about.js?v=3"></script>
 
 </body>
 </html>

@@ -1,0 +1,367 @@
+/* ============================================================
+   ABOUT PAGE — Thermal Receipt Print
+   Door overlay handled by intro.css (#store-intro)
+   ============================================================ */
+
+/* ── Page layout ── */
+.about-main {
+  min-height: 100vh;
+  padding: 90px 16px 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--cream-2);
+  background-image: url('/assets/resources-design/bg.png');
+  background-position: top center;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+}
+
+/* ── Thermal printer machine ── */
+.receipt-machine {
+  width: min(760px, calc(100vw - 32px));
+  margin: 0 auto;
+}
+.rm-body {
+  background: linear-gradient(to bottom, #242424, #181818);
+  border: 1.5px solid rgba(255,255,255,.07);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 13px 20px 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 -4px 16px rgba(0,0,0,.08);
+}
+.rm-brand {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,.22);
+  text-transform: uppercase;
+}
+.rm-led {
+  position: absolute;
+  right: 16px; top: 50%;
+  transform: translateY(-50%);
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #3a3a3a;
+  box-shadow: none;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.rm-led.is-printing {
+  background: #52ff48;
+  box-shadow: 0 0 8px rgba(82,255,72,.8);
+  animation: rm-blink .55s steps(1, end) infinite;
+}
+.rm-led.is-done {
+  background: #52ff48;
+  box-shadow: 0 0 6px rgba(82,255,72,.6);
+}
+@keyframes rm-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: .18; }
+}
+.rm-slot-wrap {
+  background: #141414;
+  border: 1.5px solid rgba(255,255,255,.06);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  padding: 0 20px 9px;
+  display: flex;
+  justify-content: center;
+}
+.rm-slot {
+  width: 65%;
+  height: 5px;
+  background: #060606;
+  border-radius: 0 0 3px 3px;
+  box-shadow:
+    inset 0 2px 5px rgba(0,0,0,.95),
+    inset 0 0 8px rgba(0,0,0,.6);
+}
+
+/* ── Thermal receipt ── */
+.receipt-feed {
+  width: min(760px, calc(100vw - 32px));
+  height: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: height var(--receipt-print-duration, 4800ms) linear;
+  will-change: height;
+}
+.receipt-feed.is-printing {
+  overflow: hidden;
+}
+.receipt-feed.is-printed {
+  overflow: visible;
+}
+.receipt-wrap {
+  width: 100%;
+  flex: 0 0 auto;
+  position: relative;
+  filter: drop-shadow(2px 6px 24px rgba(0,0,0,.12)) drop-shadow(0 2px 0 rgba(0,0,0,.06));
+}
+
+/* Printer head glow line */
+.receipt-printer-head {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  top: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(90deg,
+    transparent 2%,
+    rgba(255,120,40,.4) 20%,
+    rgba(255,200,120,1) 50%,
+    rgba(255,120,40,.4) 80%,
+    transparent 98%);
+  box-shadow:
+    0 0 6px rgba(255,140,60,.7),
+    0 0 16px rgba(255,100,30,.3);
+  transition: opacity .25s ease;
+  animation: receipt-head-pulse .42s ease-in-out infinite alternate;
+}
+@keyframes receipt-head-pulse {
+  from { transform: translateY(-1px); }
+  to { transform: translateY(2px); }
+}
+
+/* Zigzag cut edges */
+.receipt-edge {
+  width: 100%;
+  height: 18px;
+  background-size: 18px 18px;
+}
+.receipt-edge--top {
+  background-image:
+    linear-gradient(135deg, var(--cream-2) 50%, var(--paper) 50%),
+    linear-gradient(225deg, var(--paper)   50%, var(--cream-2) 50%);
+  background-position: 0 0, 9px 0;
+}
+.receipt-edge--bottom {
+  background-image:
+    linear-gradient(315deg, var(--cream-2) 50%, var(--paper) 50%),
+    linear-gradient(45deg,  var(--paper)   50%, var(--cream-2) 50%);
+  background-position: 0 0, 9px 0;
+}
+
+/* Receipt paper body */
+.receipt-body {
+  background: var(--paper);
+  padding: 30px 46px 40px;
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(16px, 1.65vw, 19px);
+  line-height: 1.78;
+  text-align: center;
+  color: var(--ink);
+  border-left: 1px solid rgba(0,0,0,.05);
+  border-right: 1px solid rgba(0,0,0,.05);
+}
+
+/* Individual lines — thermal print-head reveal (bottom -> top) */
+.rl {
+  display: block;
+  margin: 0;
+  clip-path: inset(102% 0 0 0);
+  transition: clip-path .12s ease-out;
+}
+.rl.is-printed {
+  clip-path: inset(0);
+}
+
+/* Line modifiers */
+.rl.center { text-align: center; }
+.rl.bold   { font-weight: 700; }
+.rl.muted  { color: rgba(21,21,21,.32); }
+.rl.label  { font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+.rl.red    { color: var(--red); }
+.rl.green  { color: var(--green); }
+.rk {
+  display: inline-block;
+  font-weight: 700;
+  min-width: 10ch;
+  margin-right: 1ch;
+  text-align: right;
+}
+.team-break {
+  margin: 10px -16px 0;
+  padding: 6px 12px;
+  color: #fff;
+  background: #7c1717;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,.12);
+}
+
+/* Vivace team receipt insert */
+.receipt-team {
+  padding: 10px 0 18px;
+  text-align: center;
+}
+.receipt-team-title {
+  margin: 0 0 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(28px, 6vw, 48px);
+  line-height: 1;
+  color: #7c1717;
+}
+.receipt-team-flourish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 auto 28px;
+  color: #7c1717;
+}
+.receipt-team-flourish::before,
+.receipt-team-flourish::after {
+  content: "❦";
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 32px;
+  line-height: 1;
+}
+.receipt-team-flourish span {
+  width: min(360px, 56%);
+  height: 2px;
+  background: currentColor;
+  opacity: .75;
+}
+.team-slider {
+  position: relative;
+  margin: 0 auto;
+  width: min(100%, 620px);
+}
+.team-slide-window {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #efe8d3;
+  border: 16px solid #f5efd8;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.16),
+    inset 0 0 0 1px rgba(124,23,23,.08);
+}
+.team-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(22px);
+  transition: opacity .24s ease, transform .28s ease;
+}
+.team-slide.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.team-photo-placeholder {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(124,23,23,.10) 0 1px, transparent 1px 18px),
+    linear-gradient(45deg, rgba(124,23,23,.08) 0 1px, transparent 1px 18px),
+    #d9d2bf;
+  color: rgba(124,23,23,.72);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(30px, 6vw, 58px);
+  font-weight: 700;
+}
+.team-slider-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 42px;
+  height: 58px;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 38px;
+  line-height: 1;
+  text-shadow: 0 1px 5px rgba(0,0,0,.45);
+  cursor: var(--cursor-pointer);
+}
+.team-slider-btn--prev { left: 12px; }
+.team-slider-btn--next { right: 12px; }
+.team-slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.team-slider-dots button {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(124,23,23,.28);
+  cursor: var(--cursor-pointer);
+}
+.team-slider-dots button.is-active {
+  width: 24px;
+  background: #7c1717;
+}
+
+/* Barcode bars */
+.receipt-barcode {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2px;
+  height: 48px;
+  margin: 10px auto 8px;
+}
+.receipt-barcode span {
+  display: inline-block;
+  background: var(--ink);
+  opacity: 0;
+  transition: opacity .05s ease;
+}
+.receipt-barcode span.is-drawn { opacity: 1; }
+
+/* CTA below receipt */
+.about-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 44px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .5s ease, transform .4s ease;
+}
+.about-cta.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 700px) {
+  .about-main {
+    background-size: auto 760px;
+  }
+
+  .receipt-body {
+    padding: 24px 22px 34px;
+    font-size: 14px;
+  }
+
+  .team-slide-window {
+    border-width: 10px;
+  }
+
+  .team-slider-btn {
+    width: 34px;
+    height: 48px;
+    font-size: 30px;
+  }
+}

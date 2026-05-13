@@ -10,6 +10,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 
-app.listen(PORT, () => {
-  console.log(`Vivace 2026 running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Vivace 2026 running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

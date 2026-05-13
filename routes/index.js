@@ -28,7 +28,7 @@ router.get('/explore/:school', (req, res) => {
 
 // About page
 router.get('/about', (req, res) => {
-  res.render('about-page');
+  res.render('about-page', { page: 'about' });
 });
 
 // FAQ page

@@ -40,7 +40,10 @@
     .hero{ padding:30px 16px 50px }
     .hero h1{ font-size: clamp(56px, 14vw, 84px) }
     .hero.basket-hero{ padding:28px 14px 58px }
-    .basket-hero-wrap{ min-height:680px }
+    .basket-hero-wrap{
+      --hero-basket-gap: 76px;
+      min-height:680px;
+    }
     .hero-wordmark{ font-size:clamp(58px, 18vw, 82px); text-shadow:3px 3px 0 #fff, 5px 5px 0 var(--ink) }
     .hero-wordmark .title-year{ text-shadow:2px 2px 0 #fff, 3px 3px 0 var(--ink) }
     .basket-hero .hero-meta{ gap:8px; margin-top:14px }
@@ -59,16 +62,23 @@
     }
     .basket-showcase{
       width:min(450px, 106vw);
-      margin-top:18px;
+      margin-top:16px;
       transform:none;
     }
-    .basket-decor.price-tag{ --x:91%; --y:10%; --w:24% }
+    .find-cca-sign{
+      top:5.5%;
+      width:66%;
+    }
+    .basket-decor.price-tag{ --x:91%; --y:10%; --w:16% }
     .basket-decor.sun-tag{ --x:10%; --y:10%; --w:17% }
     .basket-decor.juice-tag{ --x:-2%; --y:33%; --w:14% }
     .basket-decor.label-tag{ --x:101%; --y:34%; --w:16% }
     .basket-decor.button-tag{ --x:0%; --y:72%; --w:13% }
     .basket-decor.clip-tag{ --x:101%; --y:91%; --w:26% }
-    .basket-decor.croissant-tag{ --x:7%; --y:94%; --w:35% }
+    .basket-decor.croissant-tag{ --x:8%; --y:96%; --w:23% }
+    .basket-decor.green-price-tag{ --x:0%; --y:16%; --w:13% }
+    .basket-decor.red-price-tag{ --x:100%; --y:58%; --w:14% }
+    .basket-decor.delmonte-tag{ --x:1%; --y:55%; --w:12% }
     .school-fruit .fruit-label{
       border-width:2px;
       box-shadow:2px 2px 0 var(--ink);
@@ -173,9 +183,12 @@
     .hero-wordmark{ font-size:54px }
     .basket-hero-wrap{ min-height:650px }
     .basket-showcase{ width:108vw }
-    .basket-decor.price-tag{ --w:22% }
+    .basket-decor.price-tag{ --w:15% }
     .basket-decor.clip-tag{ --w:24% }
-    .basket-decor.croissant-tag{ --w:32% }
+    .basket-decor.croissant-tag{ --w:21% }
+    .basket-decor.green-price-tag,
+    .basket-decor.red-price-tag,
+    .basket-decor.delmonte-tag{ display:none }
     .school-fruit .fruit-label{ font-size:10px }
     .school-fruit .aisle-tag{ display:none }
     .hero.flatlay-hero h1{ font-size:52px }
@@ -248,24 +261,25 @@
     html.glove-cursor-ready input,
     html.glove-cursor-ready textarea,
     html.glove-cursor-ready [contenteditable="true"]{
-      cursor:text !important;
+      cursor:none !important;
     }
 
     .glove-cursor{
       position:fixed;
-      left:0;
-      top:0;
+      left:var(--cursor-x, 0);
+      top:var(--cursor-y, 0);
       width:64px;
       height:64px;
       z-index:2147483647;
       pointer-events:none;
       user-select:none;
+      -webkit-user-drag:none;
       opacity:0;
-      transform:translate(-33px, -16px) scale(1);
+      transform:translate3d(-33px, -16px, 0);
       transform-origin:33px 16px;
       filter:drop-shadow(2px 4px 0 rgba(26,26,26,.22));
-      transition:opacity .12s ease, transform .1s ease;
-      will-change:left, top, transform;
+      transition:opacity .12s ease;
+      will-change:left, top;
     }
 
     .glove-cursor.is-visible{
@@ -273,10 +287,6 @@
     }
 
     .glove-cursor.is-pressing{
-      transform:translate(-33px, -16px) scale(.9) rotate(-4deg);
-    }
-
-    .glove-cursor.is-text-target{
-      opacity:0;
+      opacity:1;
     }
   }
