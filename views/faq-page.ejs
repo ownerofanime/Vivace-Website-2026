@@ -1,50 +1,87 @@
-<%- include('partials/head') %>
-<body>
+<%- include('partials/head', { page: 'faq' }) %>
+<body class="faq-page">
 
 <%- include('partials/intro') %>
 <%- include('partials/nav') %>
 
 <!-- Page header -->
-<section class="page-header">
-  <div class="container">
-    <span class="section-eyebrow">★ Aisle 4 · FAQ</span>
-    <h1 class="section-h2">Questions <span class="hi">at the checkout.</span></h1>
-    <p style="font-size:18px; max-width:52ch; margin:0">Can't find your answer? DM us on Instagram or grab the floating Ask Us button.</p>
+<section class="faq-hero">
+  <div class="faq-hero-card">
+    <span class="section-eyebrow">★ Aisle 4 · Special Offers</span>
+    <h1 class="section-h2">Got <span class="hi">Questions?</span></h1>
+    <p class="faq-sub">Clip the coupon, get the answer. No loyalty card required.</p>
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq" style="padding-top:60px">
-  <div class="container">
-    <div class="faq-grid">
+<!-- Coupons -->
+<div class="coupon-flyer-header">
+  <span class="coupon-flyer-label">✂ &nbsp; this week's coupons &nbsp; ✂</span>
+</div>
 
-      <div class="faq-side">
-        <div style="position:relative; max-width:380px">
-          <img src="/assets/object-receipt-detailed.svg" alt="" style="width:240px; transform:rotate(-6deg); filter:drop-shadow(8px 8px 0 var(--ink))">
-          <div style="position:absolute; right:-10px; top:30px; width:120px; transform:rotate(10deg); filter:drop-shadow(4px 4px 0 var(--ink))">
-            <img src="/assets/sign-special-offer.svg" alt="">
+<div class="coupon-grid">
+  <% faq.forEach((item, i) => { %>
+    <article class="coupon-item<%= item.open ? ' is-clipped' : '' %>" data-coupon>
+
+      <!-- Coupon face (clickable) -->
+      <button class="coupon-face" aria-expanded="<%= item.open ? 'true' : 'false' %>">
+
+        <!-- Cut line -->
+        <div class="coupon-cut-strip" aria-hidden="true">
+          <span class="cut-scissors">✂</span>
+          <div class="cut-dashes"></div>
+          <span class="cut-label">CUT HERE</span>
+          <span class="cut-clipped-label">✓ CLIPPED</span>
+        </div>
+
+        <!-- Body -->
+        <div class="coupon-row">
+
+          <div class="coupon-side" aria-hidden="true">
+            <span class="coupon-num"><%= item.num %></span>
+            <span class="coupon-clip-word">Clip</span>
           </div>
+
+          <div class="coupon-main">
+            <span class="coupon-eyebrow">★ QUICK ANSWER</span>
+            <p class="coupon-q"><%= item.question %></p>
+            <div class="coupon-footer-row">
+              <span class="coupon-expiry">VALID: AUG 11–13 2026</span>
+              <span class="coupon-hint">✂ tap to clip</span>
+            </div>
+          </div>
+
+        </div>
+      </button>
+
+      <!-- Answer stub -->
+      <div class="coupon-stub" aria-hidden="<%= item.open ? 'false' : 'true' %>" role="region" aria-label="<%= item.question %>">
+        <div class="coupon-stub-inner">
+          <div class="stub-top">
+            <span class="stub-check" aria-hidden="true">✓</span>
+            <span class="stub-clipped-label">Clipped — here's your answer</span>
+          </div>
+          <p class="stub-answer"><%= item.answer %></p>
         </div>
       </div>
 
-      <div class="faq-list">
-        <% faq.forEach(item => { %>
-          <details class="faq-item" <%= item.open ? 'open' : '' %>>
-            <summary>
-              <span class="faq-num"><%= item.num %></span>
-              <%= item.question %>
-              <span class="toggle">+</span>
-            </summary>
-            <div class="ans"><%= item.answer %></div>
-          </details>
-        <% }) %>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </article>
+  <% }) %>
+</div>
 
 <%- include('partials/footer') %>
+
+<script>
+  document.querySelectorAll('[data-coupon]').forEach(function(coupon) {
+    var btn  = coupon.querySelector('.coupon-face');
+    var stub = coupon.querySelector('.coupon-stub');
+
+    btn.addEventListener('click', function() {
+      var isOpen = coupon.classList.toggle('is-clipped');
+      btn.setAttribute('aria-expanded', isOpen);
+      stub.setAttribute('aria-hidden', !isOpen);
+    });
+  });
+</script>
 
 </body>
 </html>

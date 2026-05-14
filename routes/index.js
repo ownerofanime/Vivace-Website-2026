@@ -33,7 +33,7 @@ router.get('/about', (req, res) => {
 
 // FAQ page
 router.get('/faq', (req, res) => {
-  res.render('faq-page', { faq });
+  res.render('faq-page', { faq, page: 'faq' });
 });
 
 // Partners & Deals page
