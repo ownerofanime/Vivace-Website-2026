@@ -865,14 +865,17 @@
     transform:translateX(-50%) rotate(calc(var(--r, 0deg) * -1));
     background:#fff;
     border:3px solid var(--ink);
-    border-radius:999px;
-    padding:4px 11px;
+    border-radius:10px;
+    padding:4px 9px;
     box-shadow:3px 3px 0 var(--ink);
     font-family:'Fredoka', sans-serif;
     font-weight:700;
-    font-size:15px;
-    line-height:1;
-    white-space:nowrap;
+    font-size:12px;
+    line-height:1.2;
+    white-space:normal;
+    text-align:center;
+    width:max-content;
+    max-width:130px;
     transition:background .2s ease, color .2s ease, transform .24s cubic-bezier(.2,1.35,.32,1), box-shadow .24s ease;
   }
   .school-fruit.product:hover .fruit-label,

@@ -159,7 +159,18 @@
 
 /* Receipt paper body */
 .receipt-body {
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 28px,
+      rgba(0,0,0,.055) 28px,
+      rgba(0,0,0,.055) 29px
+    );
+  background-size: 300px 300px, 100% 100%;
+  background-repeat: repeat, repeat;
   padding: 30px 46px 40px;
   font-family: 'Space Mono', monospace;
   font-size: clamp(16px, 1.65vw, 19px);
@@ -185,7 +196,7 @@
 .rl.center { text-align: center; }
 .rl.bold   { font-weight: 700; }
 .rl.muted  { color: rgba(21,21,21,.32); }
-.rl.label  { font-size: 11px; font-weight: 700; letter-spacing: .1em; }
+.rl.label  { font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: .08em; line-height: 1.15; }
 .rl.red    { color: var(--red); }
 .rl.green  { color: var(--green); }
 .rk {
@@ -209,6 +220,45 @@
   padding: 10px 0 18px;
   text-align: center;
 }
+/* ── Vivace '26 logo wordmark inside receipt ── */
+.receipt-logo-wrap {
+  padding: 20px 0 16px;
+  text-align: center;
+}
+
+.receipt-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  line-height: 1;
+}
+
+.receipt-logo-word {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(52px, 14vw, 96px);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.receipt-logo-year {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(32px, 8vw, 58px);
+  font-weight: 600;
+  color: var(--red);
+  line-height: 1;
+}
+
+.receipt-logo-sub {
+  margin: 8px 0 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(21,21,21,.4);
+}
+
 .receipt-team-title {
   margin: 0 0 14px;
   font-family: Georgia, 'Times New Roman', serif;

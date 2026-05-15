@@ -2,6 +2,7 @@ module.exports = [
   {
     id: 'acf',
     name: 'ACF',
+    fullName: 'SMU Arts & Cultural Fraternity',
     color: '--red',
     count: 18,
     aisle: 'Aisle 01 · Arts shelf',
@@ -14,6 +15,7 @@ module.exports = [
   {
     id: 'sics',
     name: 'SICS',
+    fullName: 'Special Interest & Community Service Sodality',
     color: '--green',
     count: 24,
     aisle: 'Aisle 02 · Comm shelf',
@@ -26,6 +28,7 @@ module.exports = [
   {
     id: 'icon',
     name: 'ICON',
+    fullName: 'SMU International Connections',
     color: '--orange',
     count: 9,
     aisle: 'Aisle 03 · Global shelf',
@@ -38,6 +41,7 @@ module.exports = [
   {
     id: 'smux',
     name: 'SMUX',
+    fullName: 'SMUXploration Crew',
     color: '--blue',
     count: 26,
     aisle: 'Aisle 04 · Sports shelf',
@@ -50,6 +54,7 @@ module.exports = [
   {
     id: 'ssu',
     name: 'SSU',
+    fullName: 'SMU Sports Union',
     color: '--yellow',
     count: 12,
     aisle: 'Aisle 05 · Service shelf',
@@ -62,6 +67,7 @@ module.exports = [
   {
     id: 'gri',
     name: 'GRI',
+    fullName: 'Governance, Registered & Independents',
     color: '--pink',
     count: 14,
     aisle: 'Aisle 06 · Growth shelf',
@@ -74,6 +80,7 @@ module.exports = [
   {
     id: 'acad',
     name: 'Academic',
+    fullName: 'Academic-Based Clubs',
     color: '--ink',
     count: 17,
     aisle: 'Aisle 07 · Academic shelf',
