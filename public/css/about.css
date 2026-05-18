@@ -200,24 +200,33 @@
 .rl.red    { color: var(--red); }
 .rl.green  { color: var(--green); }
 .rk {
-  display: inline-block;
   font-weight: 700;
   min-width: 10ch;
   margin-right: 1ch;
   text-align: right;
+  flex-shrink: 0;
+}
+/* Centre the detail block as one unit; rows stretch to widest row width */
+.receipt-details-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: left;
+}
+.detail-row {
+  display: flex;
+  align-items: baseline;
+  margin: 0;
 }
 .team-break {
-  margin: 10px -16px 0;
-  padding: 6px 12px;
-  color: #fff;
-  background: #7c1717;
-  border-radius: 4px;
-  box-shadow: inset 0 -2px 0 rgba(0,0,0,.12);
+  margin: 0 -46px;
+  height: 36px;
+  background: #0d1b4b;
+  border-radius: 10px;
 }
 
 /* Vivace team receipt insert */
 .receipt-team {
-  padding: 10px 0 18px;
+  padding: 0 0 18px;
   text-align: center;
 }
 /* ── Vivace '26 logo wordmark inside receipt ── */
@@ -259,33 +268,12 @@
   color: rgba(21,21,21,.4);
 }
 
-.receipt-team-title {
-  margin: 0 0 14px;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(28px, 6vw, 48px);
-  line-height: 1;
-  color: #7c1717;
-}
-.receipt-team-flourish {
+.receipt-team-heading {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  gap: 18px;
-  margin: 0 auto 28px;
-  color: #7c1717;
-}
-.receipt-team-flourish::before,
-.receipt-team-flourish::after {
-  content: "❦";
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 32px;
-  line-height: 1;
-}
-.receipt-team-flourish span {
-  width: min(360px, 56%);
-  height: 2px;
-  background: currentColor;
-  opacity: .75;
+  gap: 8px;
+  margin: 24px 0 20px;
 }
 .team-slider {
   position: relative;
@@ -325,6 +313,7 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: clamp(30px, 6vw, 58px);
   font-weight: 700;
+  font-style: italic;
 }
 .team-slider-btn {
   position: absolute;
@@ -403,6 +392,12 @@
   .receipt-body {
     padding: 24px 22px 34px;
     font-size: 14px;
+  }
+
+  .team-break {
+    margin: 0 -22px;
+    height: 30px;
+    border-radius: 8px;
   }
 
   .team-slide-window {
